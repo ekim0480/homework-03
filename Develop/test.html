@@ -130,7 +130,7 @@
                 reqNumber === false && 
                 reqSpecial === false
                ) {
-                   finalArr = reqLowercase.concat(reqUppercase);
+                   finalArr = lowercaseArr.concat(uppercaseArr);
 
                } else if (
                 reqLowercase === true && 
@@ -138,7 +138,7 @@
                 reqNumber === true && 
                 reqSpecial === false
                ) {
-                   finalArr = reqLowercase.concat(reqNumber);
+                   finalArr = lowercaseArr.concat(numberArr);
 
                } else if (
                 reqLowercase === true && 
@@ -146,7 +146,7 @@
                 reqNumber === false && 
                 reqSpecial === true
                ) {
-                   finalArr = reqLowercase.concat(reqSpecial);
+                   finalArr = lowercaseArr.concat(specialArr);
 
             // If uppercase and one other is true.
 
@@ -156,7 +156,7 @@
                 reqNumber === true && 
                 reqSpecial === false
                ) {
-                   finalArr = reqUppercase.concat(reqNumber);
+                   finalArr = uppercaseArr.concat(numberArr);
 
                } else if (
                 reqLowercase === false && 
@@ -164,7 +164,7 @@
                 reqNumber === false && 
                 reqSpecial === true
                ) {
-                   finalArr = reqUppercase.concat(reqSpecial);
+                   finalArr = uppercaseArr.concat(specialArr);
 
             // If numbers and one other is true.
 
@@ -174,11 +174,37 @@
                 reqNumber === true && 
                 reqSpecial === true
                ) {
-                   finalArr = reqNumber.concat(reqSpecial);
+                   finalArr = numberArr.concat(specialArr);
 
             // Begin if/else for if 3 options are true.
 
             // If lowercase and 2 others are true.
+
+               } else if (
+                reqLowercase === true && 
+                reqUppercase === true && 
+                reqNumber === true && 
+                reqSpecial === false
+               ) {
+                   finalArr = lowercaseArr.concat(uppercaseArr, numberArr);
+
+               } else if (
+                reqLowercase === true && 
+                reqUppercase === false && 
+                reqNumber === true && 
+                reqSpecial === true
+               ) {
+                   finalArr = lowercaseArr.concat(numberArr, specialArr);
+
+            // If uppercase and 2 others are true.
+
+               } else if (
+                reqLowercase === false && 
+                reqUppercase === true && 
+                reqNumber === true && 
+                reqSpecial === true
+               ) {
+                   finalArr = uppercaseArr.concat(numberArr, specialArr);
                }
         }
 
