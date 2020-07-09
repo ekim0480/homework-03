@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // Setting up variables for when user inputs password's requirements.
+
+        var reqLength;
+        var reqLowercase;
+        var reqUppercase;
+        var reqNumber;
+        var reqSpecial;
+
+        // Creating arrays containing all possible characters user may want to include.
+
+        // Lowercase characters.
+        lowercaseArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+        // Uppercase characters.
+
+        // A possible alternative way to create and uppercase array is to use a for loop to go through the lowercaseArray and use the toUpperCase() function.
+
+            // uppercaseArr = [];
+
+            // function toUpper() {
+            //     for (var i = 0; i < lowercaseArr.length; i++) {
+            //         uppercaseArr.push(lowercaseArr[i].toUpperCase());
+            //     }
+            // }
+            // toUpper();
+
+        uppercaseArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+        // Numbers.
+        
+        numberArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+
+        // Special characters as per link in the assignment README.
+        // https://www.owasp.org/index.php/Password_special_characters
+
+        specialArr = [" ", "!", '"', "#", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
+
+        // Setting up an empty array where the possible character arrays will concatenated to depending on user's inputs.
+        // A google search for "how to combine arrays" led me to use the concat() method.
+
+        var finalArr = [];
+
+        if (isNaN(3)) {
+            console.log("is not a number");
+        } else {
+            console.log("is a number")
+        }
+
+        // Function to generate the password.
+
+        function pwGenerator() {
+
+            // Asking user for desired password length.
+            // parseInt() to ensure input is an integer.
+            reqLength = prompt("How many characters would you like your password to be? \n Minimum: 8 \n Maximum: 128");
+
+            // Validating if user's input is a number.
+            // Googled "How to validate number javascript".
+            // I decided to use the isNaN(), (isNotaNumber), function.
+
+            if (isNaN(reqLength)) {
+                alert("Please enter a number.");
+            }
+
+        }
+
+    </script>
+</body>
+</html>
