@@ -25,15 +25,6 @@
 
         // A possible alternative way to create and uppercase array is to use a for loop to go through the lowercaseArray and use the toUpperCase() function.
 
-            // uppercaseArr = [];
-
-            // function toUpper() {
-            //     for (var i = 0; i < lowercaseArr.length; i++) {
-            //         uppercaseArr.push(lowercaseArr[i].toUpperCase());
-            //     }
-            // }
-            // toUpper();
-
         uppercaseArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
         // Numbers.
@@ -50,28 +41,145 @@
 
         var finalArr = [];
 
-        if (isNaN(3)) {
-            console.log("is not a number");
-        } else {
-            console.log("is a number")
-        }
-
         // Function to generate the password.
 
         function pwGenerator() {
 
             // Asking user for desired password length.
             // parseInt() to ensure input is an integer.
-            reqLength = prompt("How many characters would you like your password to be? \n Minimum: 8 \n Maximum: 128");
+            reqLength = parseInt(prompt("How many characters would you like your password to be? \n Minimum: 8 \n Maximum: 128"));
 
-            // Validating if user's input is a number.
+            // Validating if user's input is a number between 8 and 128
             // Googled "How to validate number javascript".
             // I decided to use the isNaN(), (isNotaNumber), function.
 
-            if (isNaN(reqLength)) {
-                alert("Please enter a number.");
-            }
+            if (isNaN(reqLength) || reqLength < 8 || reqLength > 128) {
+                alert("Please enter a number between 8 and 128.");
 
+            // If conditions met, move onto "confirms".
+            // True/false values will be stored into previously defined variables to be used for 
+            // if/else statements that will determine what library of characters the password
+            // generator will use.
+
+            } else {
+                reqLowercase = confirm("Can your password include the lowercase alphabet?");
+                reqUppercase = confirm("Can your password include the UPPERCASE alphabet?");
+                reqNumber = confirm("Can your password include numbers?");
+                reqSpecial = confirm("Can your password include special characters?");
+            };
+
+            // Begin if/else statements to determine library of possible characters
+            // depending on user's inputs.
+
+            // If/else for if user picked "true" for only 1 of the 4 options.
+            // Simply set the finalArr equal to the one "true" array.
+
+            // If only lowercase is true.
+
+            if (
+                reqLowercase === true && 
+                reqUppercase === false && 
+                reqNumber === false && 
+                reqSpecial === false
+               ) {
+                   finalArr = lowercaseArr;
+
+            // If only uppercase is true.
+
+               } else if (
+                reqLowercase === false && 
+                reqUppercase === true && 
+                reqNumber === false && 
+                reqSpecial === false
+               ) {
+                   finalArr = uppercaseArr;
+
+            // If only numbers is true.
+
+               } else if (
+                reqLowercase === false && 
+                reqUppercase === false && 
+                reqNumber === true && 
+                reqSpecial === false
+               ) {
+                   finalArr = numberArr;
+
+            // If only special characters is true.
+
+               } else if (
+                reqLowercase === false && 
+                reqUppercase === false && 
+                reqNumber === false && 
+                reqSpecial === true
+               ) {
+                   finalArr = specialArr;
+
+            // Begin if/else for if 2 of 4 options are true.
+            // Begin use of concat() method.
+            // We do not need to declare true/false for all variables every time
+            // since order does not matter, we don't need to double dip.
+            // Eg: (reqLowercase === true && reqUppercase === true) is the same as
+            //     (reqUppercase === true && reqLowercase === true)
+            // Therefore, we need only declare this condition once.
+
+            // If lowercase and one other is true.
+
+               } else if (
+                reqLowercase === true && 
+                reqUppercase === true && 
+                reqNumber === false && 
+                reqSpecial === false
+               ) {
+                   finalArr = reqLowercase.concat(reqUppercase);
+
+               } else if (
+                reqLowercase === true && 
+                reqUppercase === false && 
+                reqNumber === true && 
+                reqSpecial === false
+               ) {
+                   finalArr = reqLowercase.concat(reqNumber);
+
+               } else if (
+                reqLowercase === true && 
+                reqUppercase === false && 
+                reqNumber === false && 
+                reqSpecial === true
+               ) {
+                   finalArr = reqLowercase.concat(reqSpecial);
+
+            // If uppercase and one other is true.
+
+               } else if (
+                reqLowercase === false && 
+                reqUppercase === true && 
+                reqNumber === true && 
+                reqSpecial === false
+               ) {
+                   finalArr = reqUppercase.concat(reqNumber);
+
+               } else if (
+                reqLowercase === false && 
+                reqUppercase === true && 
+                reqNumber === false && 
+                reqSpecial === true
+               ) {
+                   finalArr = reqUppercase.concat(reqSpecial);
+
+            // If numbers and one other is true.
+
+               } else if (
+                reqLowercase === false && 
+                reqUppercase === false && 
+                reqNumber === true && 
+                reqSpecial === true
+               ) {
+                   finalArr = reqNumber.concat(reqSpecial);
+
+            // Begin if/else for if 3 options are true.
+
+            // If lowercase and 2 others are true.
+               }
         }
 
     </script>
