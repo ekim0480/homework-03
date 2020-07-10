@@ -61,10 +61,7 @@ function generatePassword() {
 
     if (isNaN(reqLength) || reqLength < 8 || reqLength > 128) {
         alert("Please enter a number between 8 and 128.");
-
-        // Calling for script to be run again until input meets required conditions.
-
-
+        return;
 
     // If conditions met, move onto "confirms".
     // True/false values will be stored into previously defined variables to be used for 
@@ -81,18 +78,29 @@ function generatePassword() {
     // Begin if/else statements to determine library of possible characters
     // depending on user's inputs.
 
+    // If user chose false for all conditions.
+
+    if  (
+        reqLowercase === false && 
+        reqUppercase === false && 
+        reqNumber === false && 
+        reqSpecial === false
+        ) {
+            alert("You must choose at least 1 option");
+            return;
+
     // If/else for if user picked "true" for only 1 of the 4 options.
     // Simply set the finalArr equal to the one "true" array.
 
     // If only lowercase is true.
 
-    if (
+        } else if (
         reqLowercase === true && 
         reqUppercase === false && 
         reqNumber === false && 
-        reqSpecial === false
+        reqSpecial === false  
         ) {
-            finalArr = lowercaseArr;
+            finalArr = lowercaseArr;         
 
     // If only uppercase is true.
 
