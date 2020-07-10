@@ -56,6 +56,10 @@
             if (isNaN(reqLength) || reqLength < 8 || reqLength > 128) {
                 alert("Please enter a number between 8 and 128.");
 
+                // Calling for script to be run again until input meets required conditions.
+
+                pwGenerator();
+
             // If conditions met, move onto "confirms".
             // True/false values will be stored into previously defined variables to be used for 
             // if/else statements that will determine what library of characters the password
@@ -182,19 +186,27 @@
 
                } else if (
                 reqLowercase === true && 
-                reqUppercase === true && 
-                reqNumber === true && 
-                reqSpecial === false
-               ) {
-                   finalArr = lowercaseArr.concat(uppercaseArr, numberArr);
-
-               } else if (
-                reqLowercase === true && 
                 reqUppercase === false && 
                 reqNumber === true && 
                 reqSpecial === true
                ) {
                    finalArr = lowercaseArr.concat(numberArr, specialArr);
+
+               } else if (
+                reqLowercase === true && 
+                reqUppercase === true && 
+                reqNumber === false && 
+                reqSpecial === true
+               ) {
+                   finalArr = lowercaseArr.concat(uppercaseArr, specialArr);
+
+               } else if (
+                reqLowercase === true && 
+                reqUppercase === true && 
+                reqNumber === true && 
+                reqSpecial === false
+               ) {
+                   finalArr = lowercaseArr.concat(uppercaseArr, numberArr);
 
             // If uppercase and 2 others are true.
 
@@ -205,7 +217,46 @@
                 reqSpecial === true
                ) {
                    finalArr = uppercaseArr.concat(numberArr, specialArr);
+
+            // If all 4 conditions are true.
+
+               } else if (
+                reqLowercase === true && 
+                reqUppercase === true && 
+                reqNumber === true && 
+                reqSpecial === true
+               ) {
+                   finalArr === lowercaseArr.concat(uppercaseArr, numberArr, specialArr);
                }
+            
+            // Creating passwordArr variable as an empty array to later push generated password into.
+
+            var passwordArr = [];
+
+            // For loop in combination with Math.random to randomly pick user's desired
+            // number of characters.
+            // Technical formula for choosing a random item from an array:
+            // Math.floor(Math.random() * (max - min +1)) + min;
+
+            for (var i = 0; i < reqLength; i++) {
+                var randomArr = finalArr[Math.floor(Math.random() * finalArr.length)];
+
+                // Push each chosen character into the previously created passwordArr.
+                
+                passwordArr.push(randomArr);
+            }
+
+            // passwordArr needs to be converted into a string to display to user.
+            // We can do this by using .join()
+            // Google searched "how to turn array into string javascript".
+            // .toString() was an option looked into but I could not remove the comma
+            // between items.
+            // Further research revealed that .toString() uses an empty .join as its
+            // default, which always results in the comma being in between items.
+
+            var finalPassword = passwordArr.join("");
+
+
         }
 
     </script>
