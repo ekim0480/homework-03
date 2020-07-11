@@ -240,7 +240,7 @@ function generatePassword() {
         reqNumber === true && 
         reqSpecial === true
         ) {
-            finalArr === lowercaseArr.concat(uppercaseArr, numberArr, specialArr);
+            finalArr = lowercaseArr.concat(uppercaseArr, numberArr, specialArr);
         }
     
     // Creating passwordArr variable as an empty array to later push generated password into.
