@@ -241,7 +241,8 @@ function generatePassword() {
         reqSpecial === true
         ) {
             finalArr = lowercaseArr.concat(uppercaseArr, numberArr, specialArr);
-        }
+            console.log(finalArr);
+        };
     
     // Creating passwordArr variable as an empty array to later push generated password into.
 
